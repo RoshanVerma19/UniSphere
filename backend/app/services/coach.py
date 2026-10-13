@@ -136,6 +136,7 @@ def _gemini_advice(data: dict, user_message: str, history: list[dict]) -> str | 
 
 def respond(db: Session, student_id: int, user_message: str, conversation_id: int | None) -> dict:
     settings = get_settings()
+    logger.info("AI coach diagnostic: gemini_configured=%s, model=%s", settings.ai_provider_configured, settings.gemini_model)
     data = snapshot(db, student_id)
     if conversation_id:
         conv = db.get(CoachConversation, conversation_id)
