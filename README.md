@@ -35,8 +35,8 @@ Use the following demo account to explore the application.
 | Field | Details |
 |---|---|
 | Role | Student |
-| Email | `student@example.com` |
-| Password | Not yet verified |
+| Email | `myteststudent@example.com` |
+| Password | "MyTeamPass789!" |
 
 The student email is present in the project's user records, but its password has not yet been confirmed. Verify or reset the account password before publishing these credentials for visitors.
 
