@@ -29,8 +29,15 @@ def seed() -> None:
     Base.metadata.create_all(bind=engine)
     db = SessionLocal()
     try:
-        if db.query(User).filter(User.email == "faculty@unisphere.local").one_or_none():
-            print("Seed already applied.")
+        existing_faculty = db.query(User).filter(
+            User.email == "faculty@unisphere.local"
+        ).one_or_none()
+        if existing_faculty:
+            existing_faculty.hashed_password = hash_password("FacultyPass123")
+            existing_faculty.role = UserRole.faculty
+            existing_faculty.is_active = True
+            db.commit()
+            print("Faculty demo password reset successfully.")
             return
         uni = University(name="UniSphere Demo University", code="USU")
         db.add(uni)
